@@ -1,0 +1,82 @@
+.event-card {
+    gap: 100px;
+    display: flex;
+    padding: 40px;
+    border-radius: 5px;
+    transition: .3s ease;
+    justify-content: space-between;
+    background-color: var(--c-white);
+    border-left: 2px solid transparent;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+
+    &:not(:first-child) {
+        margin-top: 25px;
+    }
+
+    &:hover {
+        border-left: 5px solid var(--c-secondary);
+    }
+
+    @include tablet {
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .-header, .-content, .-footer {
+        margin: auto 0;
+    }
+
+    .-header {
+        gap: 10px;
+        display: flex;
+        text-align: start;
+
+        > span {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+    }
+
+    .-content {
+        flex: 1;
+        gap: 25px;
+        display: flex;
+
+        > img {
+            width: 100%;
+            max-width: 75px;
+            border-radius: 50px;
+        }
+
+        .-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding-bottom: 5px;
+        }
+
+        .-infos {
+            gap: 15px;
+            display: flex;
+
+            .-info {
+                gap: 5px;
+                display: flex;
+
+                img {
+                    width: 15px;
+                    height: 15px;
+                }
+
+                span {
+                    margin: auto 0;
+                    color: var(--c-dimmGray);
+                }
+            }
+        }
+    }
+
+    .-footer {
+        display: flex;
+        text-align: end;
+    }
+}

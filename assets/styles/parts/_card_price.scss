@@ -1,0 +1,45 @@
+.price-card {
+    height: 100%;
+    text-align: center;
+    position: relative;
+    padding: 50px 100px;
+    border-radius: 10px;
+    color: var(--c-black);
+    transition: .3s ease;
+    background-color: var(--c-white);
+
+    &:hover {
+        margin-top: -10px;
+        height: calc(100% - 10px);
+    }
+
+    .-top {
+        // 
+    }
+
+    .-center {
+        gap: 30px;
+        display: flex;
+        padding-top: 40px;
+        flex-direction: column;
+
+        .-description {
+            color: var(--c-dimmGray);
+        }
+
+        .-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--c-black);
+        }
+    }
+
+    .-bottom {
+        gap: 10px;
+        display: flex;
+        list-style: none;
+        padding-top: 40px;
+        flex-direction: column;
+        color: var(--c-dimmGray);
+    }
+}

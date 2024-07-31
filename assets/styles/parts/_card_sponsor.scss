@@ -1,0 +1,18 @@
+.sponsor-card {
+    padding: 25px;
+    border-radius: 5px;
+    transition: .3s ease;
+    background-color: var(--c-white);
+    border: 1px solid var(--c-lightGray);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+
+    &:hover {
+        box-shadow: none;
+        background-color: transparent;
+        border: 1px solid var(--c-lightGray);
+    }
+
+    img {
+        height: 25px;
+    }
+}

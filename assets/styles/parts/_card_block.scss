@@ -1,0 +1,31 @@
+.block-card {
+    padding: 25px;
+    border-radius: 15px;
+    background-color: var(--c-white);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+
+    &.-black {
+        color: var(--c-white);
+        background-color: var(--c-black);
+    }
+
+    > .-header {
+        text-align: left;
+        font-weight: 700;
+        margin-bottom: 15px;
+
+        .-title {
+            margin: 0;
+            padding: 0;
+            font-size: 1.3rem;
+        }
+    }
+
+    > .-content {
+        // 
+
+        img {
+            max-width: 100%;
+        }
+    }
+}

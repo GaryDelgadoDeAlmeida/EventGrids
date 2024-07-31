@@ -1,0 +1,100 @@
+.banner {
+    height: 100%;
+    max-height: 200px;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .5);
+    border: 15px solid rgba(255, 255, 255, 0.5);
+
+    @include mobile {
+        max-height: 100%;
+    }
+
+    .banner-background {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 10px;
+        background-color: var(--c-primary);
+
+        img {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 10px;
+        }
+    }
+
+    .banner-wrapper {
+        // 
+
+        .banner-list {
+            display: flex;
+            padding: 25px 50px;
+            justify-content: space-between;
+
+            @include mobile {
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+
+            .-item {
+                padding: 25px;
+                width: calc(100% / 4);
+                display: flex;
+                font-size: 2rem;
+                position: relative;
+                text-align: center;
+                flex-direction: column;
+                justify-content: center;
+
+                @include tablet {
+                    font-size: 1.5rem;
+                }
+
+                @include mobile {
+                    flex: 1;
+                    width: auto;
+                    font-size: 1rem;
+                }
+
+                &:not(:last-child) {
+                    &::before {
+                        right: 0;
+                        content: ':';
+                        font-weight: 700;
+                        font-size: 3rem;
+                        position: absolute;
+                        color: var(--c-white);
+
+                        @include tablet {
+                            font-size: 2rem;
+                        }
+
+                        @include tiny_mobile {
+                            content: "";
+                        }
+                    }
+                }
+
+                span {
+                    color: var(--c-white);
+                    word-wrap: break-word;
+
+                    &.-number {
+                        font-size: 3rem;
+                        font-weight: 700;
+
+                        @include tablet {
+                            font-size: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

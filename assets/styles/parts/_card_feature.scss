@@ -1,0 +1,57 @@
+.feature-card {
+    padding: 25px;
+    border-radius: 10px;
+    background-color: var(--c-white);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+
+    &:hover {
+        transition: .3s ease;
+        box-shadow: 0 0 15px rgba(0, 0, 0, .3);
+
+        .-header img {
+            transition: .3s ease;
+            background-color: var(--c-secondary);
+        }
+    }
+
+    .-header {
+        display: flex;
+        justify-content: space-between;
+
+        img, span {
+            margin: auto 0;
+        }
+
+        img {
+            width: 35px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: var(--c-primary);
+            box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+        }
+
+        span {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--c-lightGray);
+        }
+    }
+
+    .-content {
+        gap: 15px;
+        display: flex;
+        padding: 25px 0;
+        font-size: 1rem;
+        flex-direction: column;
+
+        .-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0;
+            line-height: 1.5;
+        }
+    }
+}

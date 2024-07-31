@@ -1,0 +1,73 @@
+:root {
+    // Palette
+    --c-primary: #3813c2;
+    --c-secondary: #F20487;
+    --c-three: #101130;
+
+    // Colors
+    --c-white: #ffffff;
+    --c-red: #c00000;
+    --c-blue: #3080e3;
+    --c-black: #000000;
+    --c-green: #188038;
+    --c-orange: #ffa500;
+
+    // Specific
+    --c-greenLime: #198344;
+    --c-lightGreen: #a8f1c6;
+    --c-lightOrange: #fff9f0;
+    --c-darkRed: #8B0000;
+    --c-lightRed: #ffe0e3;
+    --c-dimmGray: #696969;
+    --c-lightGray: #f2f2f2;
+}
+
+
+/* ----------------------------------------------- *\
+    Responsive
+\* ----------------------------------------------- */
+@mixin desktop {
+    @media screen and (min-width: 992px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (max-width: 991px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin tiny_mobile {
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+
+
+/* ----------------------------------------------- *\
+    Import
+\* ----------------------------------------------- */
+@import "./parts/site";
+@import "./parts/site_admin";
+@import "./parts/form";
+@import "./parts/notification";
+@import "./parts/button";
+@import "./parts/helpers";
+@import "./parts/banner";
+@import "./parts/card_feature";
+@import "./parts/card_team";
+@import "./parts/card_block";
+@import "./parts/card_blog";
+@import "./parts/card_sponsor";
+@import "./parts/card_event";
+@import "./parts/card_price";
+@import "./parts/card_testimonial";
+@import "./parts/badge";
+@import "./parts/caroussel";

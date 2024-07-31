@@ -1,0 +1,22 @@
+.badge {
+    font-size: .85rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid transparent;
+
+    &.badge-primary {
+        color: var(--c-primary);
+        border-color: var(--c-primary);
+    }
+
+    &.badge-secondary {
+        color: var(--c-secondary);
+        border-color: var(--c-secondary);
+    }
+
+    &.badge-blue {
+        color: var(--c-blue);
+        border-color: var(--c-blue);
+    }
+}

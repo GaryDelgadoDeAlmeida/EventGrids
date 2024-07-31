@@ -1,0 +1,57 @@
+.testimonial-card {
+    height: 100%;
+    padding: 35px 50px;
+    border-radius: 10px;
+    transition: .3s ease;
+    background-color: var(--c-white);
+    border-bottom: 3px solid transparent;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+
+    &:hover {
+        border-color: var(--c-secondary);
+        margin-top: -5px;
+        height: calc(100% - 5px);
+    }
+
+    .-header {
+        gap: 25px;
+        display: flex;
+        font-size: .85rem;
+
+        img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 50px;
+        }
+
+        .-fullname {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .-job {
+            color: var(--c-dimmGray);
+        }
+
+        .-stars {
+            gap: 10px;
+            display: flex;
+
+            .-star {
+                margin: auto 0;
+
+                img {
+                    width: 15px;
+                }
+            }
+        }
+    }
+
+    .-content {
+        padding-top: 15px;
+        font-size: .9rem;
+        line-height: 1.5;
+        color: var(--c-dimmGray);
+    }
+}

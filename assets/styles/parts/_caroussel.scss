@@ -1,0 +1,18 @@
+.caroussel {
+    gap: 25px;
+    display: flex;
+    display: -webkit-box;
+    padding: 25px;
+    overflow-x: scroll;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+
+    &::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+
+    > div {
+        width: 100%;
+        max-width: 300px;
+    }
+}
