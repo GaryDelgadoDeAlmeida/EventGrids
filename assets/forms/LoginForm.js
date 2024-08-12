@@ -27,7 +27,16 @@ export default function LoginForm() {
                 }
             })
             .then((response) => {})
-            .catch((error) => {})
+            .catch((error) => {
+                let errorMessage = "An error has been encountered. Please retry later"
+                if(error.response.data.message) {
+                    errorMessage = error.response.data.message
+                } else if(error.response.data.detail) {
+                    errorMessage = error.response.data.detail
+                }
+
+                setFormResponse({classname: "danger", message: errorMessage})
+            })
     }
 
     return (
