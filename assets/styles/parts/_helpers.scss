@@ -25,6 +25,37 @@
     justify-content: center;
 }
 
+.jf-between {
+    justify-content: space-between;
+}
+
+/* ------------------------------------------------------------ *\
+    Font-size
+\* ------------------------------------------------------------ */
+.fs-16 {
+    font-size: 16px;
+}
+
+.fs-18 {
+    font-size: 18px;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-22 {
+    font-size: 22px;
+}
+
+.fs-24 {
+    font-size: 24px;
+}
+
+.fs-26 {
+    font-size: 26px;
+}
+
 
 /* ------------------------------------------------------------ *\
     Background color
@@ -105,6 +136,10 @@
     margin-top: -250px;
 }
 
+.mb-15 {
+    margin-bottom: 15px;
+}
+
 .my-auto {
   margin: 0 auto;
 }
@@ -135,6 +170,14 @@
 
 .mw-100 {
     max-width: 100%;
+}
+
+.mw-400 {
+    max-width: 400px;
+}
+
+.mw-500 {
+    max-width: 500px;
 }
 
 @include tablet {

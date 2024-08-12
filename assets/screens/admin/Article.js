@@ -24,14 +24,18 @@ export default function Article() {
                 <Notification classname={"information"} message={"Loading ..."} />
             )}
 
-            {!loading && Object.keys(error).length > 0 && (
-                <Notification classname={"danger"} message={error.response.data.message ?? error.response.data.detail} />
-            )}
-            
-            {!loading && Object.keys(items.results).length > 0 && (
-                <section className={"page-section"}>
-                    <h2 className={"page-title"}>Article detail</h2>
-                </section>
+            {!loading && (
+                <>
+                    {Object.keys(error).length > 0 && (
+                        <Notification classname={"danger"} message={error.response.data.message ?? error.response.data.detail} />
+                    )}
+
+                    {Object.keys(items.results ?? []).length > 0 && (
+                        <section className={"page-section"}>
+                            <h2 className={"page-title"}>Article detail</h2>
+                        </section>
+                    )}
+                </>
             )}
         </HeaderAdmin>
     )

@@ -1,3 +1,37 @@
 .message-card {
-    // 
+    // width: 100%;
+    // max-width: 400px;
+    padding: 50px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: var(--c-white);
+
+    .-header {
+        font-size: 5rem;
+        font-weight: 800;
+        color: var(--c-primary);
+
+        em {
+            color: var(--c-secondary);
+        }
+    }
+
+    .-content {
+        padding-top: 40px;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: var(--c-dimmGray);
+
+        .-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--c-black);
+        }
+    }
+
+    .-footer {
+        display: flex;
+        padding-top: 40px;
+        justify-content: center;
+    }
 }
