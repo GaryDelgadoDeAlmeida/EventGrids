@@ -9,8 +9,7 @@ export default function Events() {
         <Header>
             <section className={"page-hero-2nd"}>
                 <div className={"hero-background"}>
-                    <img src={`${window.location.origin}/content/img/background-hero.png`} alt={""} />
-                    <div className={"hero-superposition"}></div>
+                    <img src={`${window.location.origin}/content/img/background-hero.jpg`} alt={""} />
                 </div>
                 <div className={"hero-wrapper"}>
                     <h1 className={"-hero-title"}>Events</h1>

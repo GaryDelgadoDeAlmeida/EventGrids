@@ -18,6 +18,8 @@ export default function LoginForm() {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
+        
         axios
             .post(`${window.location.origin}/api/login_check`, credentials, {
                 headers: {
