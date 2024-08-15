@@ -14,6 +14,10 @@
         background-color: var(--c-three);
         box-shadow: 0 0 15px rgba(0, 0, 0, 1);
 
+        @include tablet {
+            display: none;
+        }
+
         .menu {
             padding: 25px;
             display: flex;

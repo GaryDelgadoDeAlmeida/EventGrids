@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import HeaderAdmin from "../../components/HeaderAdmin";
 import Notification from "../../components/Notification"
 import PrivateResource from "../../hooks/PrivateResource"
+import axios from "axios";
 
 export default function Services() {
 
@@ -13,46 +14,58 @@ export default function Services() {
         load()
     }, [offset])
 
+    const handleRemoveService = (e) => {
+        let serviceID = e.currentTarget.getAttribute("data-service")
+        console.log(serviceID)
+
+        // axios
+        //     .delete(`${window.location.origin}/api/backoffice/service/${serviceID}/remove`)
+        //     .then((response) => {})
+        //     .catch((error) => {})
+        // ;
+    }
+
     return (
         <HeaderAdmin>
-            {loading && (
-                <Notification classname={"information"} message={"Loading ..."} />
-            )}
+            <Link className={"btn btn-m btn-green"} to={"/admin/services/add"}>Add a service</Link>
 
-            {!loading && (
-                <>
-                    {Object.keys(error).length > 0 && Object.keys(items.results ?? []).length == 0 && (
-                        <Notification classname={"danger"} message={error.response.data.message ?? error.response.data.detail} />
-                    )}
+            <section className={"page-section mt-25"}>
+                {loading && (
+                    <Notification classname={"information"} message={"Loading ..."} />
+                )}
 
-                    {Object.keys(items.results ?? []).length > 0 ? (
-                        <div className={"page-section"}>
-                            <h2 className={"page-title"}>Services</h2>
-        
+                {!loading && (
+                    <>
+                        {Object.keys(error).length > 0 && Object.keys(items.results ?? []).length == 0 && (
+                            <Notification classname={"danger"} message={error.response.data.message ?? error.response.data.detail} />
+                        )}
+
+                        {Object.keys(items.results ?? {}).length > 0 ? (
                             <div className={"d-col -g-15"}>
                                 {Object.values(items.results).map((item, index) => (
                                     <div key={index} className={"table-card"}>
                                         <div className={"-top"}>
-                                            <span>{index + 1}</span>
+                                            <span>#{index + 1}</span>
                                         </div>
                                         <div className={"-center"}>
                                             <span>{item.title}</span>
                                             <p>{item.description}</p>
                                         </div>
-                                        <div className={"-bottom"}>
-                                            <Link className={"btn btn-primary"} to={"/admin/service/" + item.id}>
+                                        <div className={"-bottom d-flex -g-5"}>
+                                            <Link className={"btn btn-m btn-primary"} to={"/admin/service/" + item.id}>
                                                 <span>See</span>
                                             </Link>
+                                            <button data-service={item.id} onClick={(e) => handleRemoveService(e)} className={"btn btn-m btn-red"}>Remove</button>
                                         </div>
                                     </div>
                                 ))}
                             </div>
-                        </div>
-                    ) : (
-                        <Notification classname={"information"} message={"There is no services"} />
-                    )}
-                </>
-            )}
+                        ) : (
+                            <Notification classname={"information"} message={"There is no services"} />
+                        )}
+                    </>
+                )}
+            </section>
         </HeaderAdmin>
     )
 }

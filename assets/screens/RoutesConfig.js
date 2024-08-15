@@ -16,6 +16,8 @@ import Login from "./user/Login";
 import AdminHome from "./admin/Home";
 import AdminProfile from "./admin/Profile";
 import AdminServices from "./admin/Services";
+import AdminService from "./admin/Service";
+import AdminServiceNew from "./admin/ServiceNew";
 import AdminTeams from "./admin/Teams";
 import AdminEvents from "./admin/Events";
 import AdminSponsors from "./admin/Sponsors";
@@ -46,6 +48,8 @@ export default function RoutesConfig() {
             <Route path={"/admin"} element={<AdminHome />} />
             <Route path={"/admin/profile"} element={<AdminProfile />} />
             <Route path={"/admin/services"} element={<AdminServices />} />
+            <Route path={"/admin/services/add"} element={<AdminServiceNew />} />
+            <Route path={"/admin/service/:serviceID"} element={<AdminService />} />
             <Route path={"/admin/teams"} element={<AdminTeams />} />
             <Route path={"/admin/events"} element={<AdminEvents />} />
             <Route path={"/admin/sponsors"} element={<AdminSponsors />} />
