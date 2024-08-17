@@ -4,13 +4,10 @@
     display: flex;
     justify-content: space-between;
     background-color: var(--c-white);
+    box-shadow: 0 0 15px rgba(0, 0, 0, .2);
 
     &:nth-child(even) {
         background-color: var(--c-lightGray);
-    }
-
-    @include tablet {
-        // 
     }
 
     @include mobile {
@@ -37,6 +34,11 @@
         label {
             font-size: 1rem;
             font-weight: 700;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
         }
     }
 

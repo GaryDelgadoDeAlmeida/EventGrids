@@ -53,7 +53,7 @@ class ServiceController extends AbstractController
             $code = $e->getCode();
             return $this->json([
                 "message" => $e->getMessage()
-            ], $code !== 200 && isset(Response::$statusText[$code]) ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], $code !== 200 && isset(Response::$statusTexts[$code]) ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
         }
         
         return $this->json($service, Response::HTTP_CREATED);
@@ -90,7 +90,7 @@ class ServiceController extends AbstractController
 
             return $this->json([
                 "message" => $e->getMessage()
-            ], $code !== 200 && isset(Response::$statusText[$code]) ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], $code !== 200 && isset(Response::$statusTexts[$code]) ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return $this->json($service, Response::HTTP_ACCEPTED);
@@ -112,7 +112,7 @@ class ServiceController extends AbstractController
 
             return $this->json([
                 "message" => $e->getMessage()
-            ], $code !== 200 && isset(Response::$statusText[$code]) ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], $code !== 200 && isset(Response::$statusTexts[$code]) ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         $this->json(null, Response::HTTP_NO_CONTENT);

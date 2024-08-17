@@ -67,7 +67,7 @@ export default function Services() {
                                         <div className={"-top"}>
                                             <span>#{index + 1}</span>
                                         </div>
-                                        <div className={"-center"}>
+                                        <div className={"-center d-col -g-5"}>
                                             <label>{item.title}</label>
                                             <p>{item.description}</p>
                                         </div>
