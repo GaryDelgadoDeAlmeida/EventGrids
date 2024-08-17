@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import HeaderAdmin from "../../components/HeaderAdmin";
 import Notification from "../../components/Notification"
 import PrivateResource from "../../hooks/PrivateResource"
+import { findParent } from "../../hooks/DomControl"
 import axios from "axios";
 
 export default function Services() {
 
+    const [formResponse, setFormResponse] = useState({})
     const [offset, setOffset] = useState(1)
     const { loading, items, load, error } = PrivateResource(`${window.location.origin}/api/services?offset=${offset}`)
 
@@ -18,11 +20,29 @@ export default function Services() {
         let serviceID = e.currentTarget.getAttribute("data-service")
         console.log(serviceID)
 
-        // axios
-        //     .delete(`${window.location.origin}/api/backoffice/service/${serviceID}/remove`)
-        //     .then((response) => {})
-        //     .catch((error) => {})
-        // ;
+        let parent = findParent(e.currentTarget, "table-card")
+        if(parent.length == 0) {
+            return
+        }
+
+        axios
+            .delete(`${window.location.origin}/api/backoffice/service/${serviceID}/remove`)
+            .then((response) => {
+                if(response.status == 204) {
+                    parent.remove()
+                }
+            })
+            .catch((error) => {
+                let errorMessage = "An error has been encountered. Please retry later"
+                if(error.response.data.message) {
+                    errorMessage = error.response.data.message
+                } else if(error.response.data.detail) {
+                    errorMessage = error.response.data.detail
+                }
+
+                setFormResponse({classname: "danger", message: errorMessage})
+            })
+        ;
     }
 
     return (
@@ -48,7 +68,7 @@ export default function Services() {
                                             <span>#{index + 1}</span>
                                         </div>
                                         <div className={"-center"}>
-                                            <span>{item.title}</span>
+                                            <label>{item.title}</label>
                                             <p>{item.description}</p>
                                         </div>
                                         <div className={"-bottom d-flex -g-5"}>

@@ -15,20 +15,20 @@ export default function Events() {
 
     return (
         <HeaderAdmin>
-            {loading && (
-                <Notification classname={"information"} message={"Loading ..."} />
-            )}
+            <Link className={"btn btn-m btn-green"} to={"/admin/events/add"}>Add an event</Link>
 
-            {!loading && (
-                <>
-                    {Object.keys(error).length > 0 && Object.keys(items.results ?? []).length == 0 && (
-                        <Notification classname={"danger"} message={error.response.data.message ?? error.response.data.detail} />
-                    )}
-                    
-                    {Object.keys(items.results ?? []).length > 0 ? (
-                        <div className={"page-section"}>
-                            <h2 className={"page-title"}>Events</h2>
+            <div className={"page-section mt-25"}>
+                {loading && (
+                    <Notification classname={"information"} message={"Loading ..."} />
+                )}
 
+                {!loading && (
+                    <>
+                        {Object.keys(error).length > 0 && Object.keys(items.results ?? []).length == 0 && (
+                            <Notification classname={"danger"} message={error.response.data.message ?? error.response.data.detail} />
+                        )}
+                        
+                        {Object.keys(items.results ?? []).length > 0 ? (
                             <div className={"d-col -g-15"}>
                                 {Object.values(items.results).map((item, index) => (
                                     <div key={index} className={"table-card"}>
@@ -44,12 +44,12 @@ export default function Events() {
                                     </div>
                                 ))}
                             </div>
-                        </div>
-                    ) : (
-                        <Notification classname={"information"} message={"There is no events"} />
-                    )}
-                </>
-            )}
+                        ) : (
+                            <Notification classname={"information"} message={"There is no events"} />
+                        )}
+                    </>
+                )}
+            </div>
         </HeaderAdmin>
     )
 }

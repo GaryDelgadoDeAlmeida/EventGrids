@@ -19,6 +19,7 @@ import AdminServices from "./admin/Services";
 import AdminService from "./admin/Service";
 import AdminServiceNew from "./admin/ServiceNew";
 import AdminTeams from "./admin/Teams";
+import AdminTeamNew from "./admin/TeamNew";
 import AdminEvents from "./admin/Events";
 import AdminSponsors from "./admin/Sponsors";
 import AdminTestimonials from "./admin/Testimonials";
@@ -51,7 +52,10 @@ export default function RoutesConfig() {
             <Route path={"/admin/services/add"} element={<AdminServiceNew />} />
             <Route path={"/admin/service/:serviceID"} element={<AdminService />} />
             <Route path={"/admin/teams"} element={<AdminTeams />} />
+            <Route path={"/admin/teams/add"} element={<AdminTeamNew />} />
+            <Route path={"/admin/team/:teamID"} element={<AdminTeams />} />
             <Route path={"/admin/events"} element={<AdminEvents />} />
+            <Route path={"/admin/events/add"} element={<AdminEvents />} />
             <Route path={"/admin/sponsors"} element={<AdminSponsors />} />
             <Route path={"/admin/testimonials"} element={<AdminTestimonials />} />
             <Route path={"/admin/testimonial/:testimonialID"} element={<AdminTestimonial />} />

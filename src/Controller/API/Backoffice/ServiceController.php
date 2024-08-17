@@ -50,12 +50,71 @@ class ServiceController extends AbstractController
 
             $this->serviceRepository->save($service, true);
         } catch(\Exception $e) {
-            dd($e->getCode(), $e->getMessage());
             $code = $e->getCode();
             return $this->json([
                 "message" => $e->getMessage()
-            ], $code !== 200 ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], $code !== 200 && isset(Response::$statusText[$code]) ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+        
         return $this->json($service, Response::HTTP_CREATED);
+    }
+
+    #[Route('/service/{serviceID}/update', name: 'update_service', methods: ["UPDATE", "PUT"])]
+    public function update_service(int $serviceID, Request $request) : JsonResponse {
+        $service = $this->serviceRepository->find($serviceID);
+        if(empty($service)) {
+            return $this->json([], Response::HTTP_NOT_FOUND);
+        }
+
+        $jsonContent = json_decode($request->getContent(), true);
+        if(empty($jsonContent)) {
+            return $this->json([
+                "message" => "An error has been encountered with the sended body"
+            ], Response::HTTP_PRECONDITION_FAILED);
+        }
+
+        try {
+            $fields = $this->serviceManager->checkFields($jsonContent);
+            if(empty($fields)) {
+                throw new \Exception("An error has been encountered with the sended body", Response::HTTP_PRECONDITION_FAILED);
+            }
+
+            $service = $this->serviceManager->fillService($fields, $service);
+            if(is_string($service)) {
+                throw new \Exception($service);
+            }
+
+            $this->serviceRepository->save($service, true);
+        } catch(\Exception $e) {
+            $code = $e->getCode();
+
+            return $this->json([
+                "message" => $e->getMessage()
+            ], $code !== 200 && isset(Response::$statusText[$code]) ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        return $this->json($service, Response::HTTP_ACCEPTED);
+    }
+
+    #[Route('/service/{serviceID}/remove', name: 'remove_service', methods: ["DELETE"])]
+    public function remove_service(int $serviceID) : JsonResponse {
+        $service = $this->serviceRepository->find($serviceID);
+        if(empty($service)) {
+            return $this->json([
+                "message" => "Service not found"
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        try {
+            // TODO:: Remove service
+        } catch(\Exception $e) {
+            $code = $e->getCode();
+
+            return $this->json([
+                "message" => $e->getMessage()
+            ], $code !== 200 && isset(Response::$statusText[$code]) ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        $this->json(null, Response::HTTP_NO_CONTENT);
     }
 }

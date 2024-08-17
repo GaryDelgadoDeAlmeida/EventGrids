@@ -4,6 +4,7 @@ namespace App\Manager;
 
 use App\Entity\Team;
 use App\Enum\TeamEnum;
+use Symfony\Component\HttpFoundation\Response;
 
 class TeamManager {
 
@@ -23,11 +24,47 @@ class TeamManager {
             if($fieldName == TeamEnum::TEAM_PHOTO) {
                 // 
             } elseif($fieldName == TeamEnum::TEAM_FIRSTNAME) {
-                // 
+                if(empty($fieldValue)) {
+                    throw new \Exception(
+                        printf("The field '%s' must be filled", $fieldName), 
+                        Response::HTTP_FORBIDDEN
+                    );
+                }
+
+                if(strlen($fieldValue) > 255) {
+                    throw new \Exception(
+                        printf("The field '%s' value can't exceed 255 caracters length", $fieldName),
+                        Response::HTTP_FORBIDDEN
+                    );
+                }
             } elseif($fieldName == TeamEnum::TEAM_LASTNAME) {
-                // 
+                if(empty($fieldValue)) {
+                    throw new \Exception(
+                        printf("The field '%s' must be filled", $fieldName), 
+                        Response::HTTP_FORBIDDEN
+                    );
+                }
+
+                if(strlen($fieldValue) > 255) {
+                    throw new \Exception(
+                        printf("The field '%s' value can't exceed 255 caracters length", $fieldName),
+                        Response::HTTP_FORBIDDEN
+                    );
+                }
             } elseif($fieldName == TeamEnum::TEAM_JOB) {
-                // 
+                if(empty($fieldValue)) {
+                    throw new \Exception(
+                        printf("The field '%s' must be filled", $fieldName), 
+                        Response::HTTP_FORBIDDEN
+                    );
+                }
+
+                if(strlen($fieldValue) > 255) {
+                    throw new \Exception(
+                        printf("The field '%s' value can't exceed 255 caracters length", $fieldName),
+                        Response::HTTP_FORBIDDEN
+                    );
+                }
             }
 
             $fields[$fieldName] = $fieldValue;
