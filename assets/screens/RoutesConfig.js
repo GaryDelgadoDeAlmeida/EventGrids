@@ -30,6 +30,7 @@ import AdminPrices from "./admin/Prices";
 import AdminInboxs from "./admin/Inboxs";
 import AdminArticles from "./admin/Articles";
 import AdminArticle from "./admin/Article";
+import AdminArticleNew from "./admin/ArticleNew";
 
 // Common
 import NotFound404 from "./NotFound404";
@@ -66,6 +67,7 @@ export default function RoutesConfig() {
             <Route path={"/admin/prices"} element={<AdminPrices />} />
             <Route path={"/admin/inboxs"} element={<AdminInboxs />} />
             <Route path={"/admin/blogs"} element={<AdminArticles />} />
+            <Route path={"/admin/blogs/add"} element={<AdminArticleNew />} />
             <Route path={"/admin/blog/:blogID"} element={<AdminArticle />} />
 
             <Route path={"*"} element={<NotFound404 />} />

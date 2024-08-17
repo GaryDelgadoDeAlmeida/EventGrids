@@ -16,6 +16,10 @@ class BlogRepository extends ServiceEntityRepository
         parent::__construct($registry, Blog::class);
     }
 
+    /**
+     * @param Blog entity
+     * @param bool flush changes into database
+     */
     public function save(Blog $entity, bool $flush = false) : void {
         $this->getEntityManager()->persist($entity);
 
@@ -24,6 +28,10 @@ class BlogRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @param Blog entity
+     * @param bool flush changes into database
+     */
     public function remove(Blog $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -38,7 +46,7 @@ class BlogRepository extends ServiceEntityRepository
      */
     public function countBlogs() {
         return $this->createQueryBuilder("blog")
-            ->select("COUNT(id) as nbrBlogs")
+            ->select("COUNT(blog.id) as nbrBlogs")
             ->getQuery()
             ->getSingleResult()["nbrBlogs"]
         ;

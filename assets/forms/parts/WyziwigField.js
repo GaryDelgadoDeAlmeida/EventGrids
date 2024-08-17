@@ -19,7 +19,7 @@ import {
 } from 'ckeditor5';
 import 'ckeditor5/ckeditor5.css';
 
-export default function WyziwigField({fieldName, fieldValue, updateCredentials}) {
+export default function WyziwigField({fieldName, fieldValue, placeholder, updateCredentials}) {
 
     const handleChange = (e) => {
         updateCredentials(fieldName, e.currentTarget.value)
@@ -51,7 +51,7 @@ export default function WyziwigField({fieldName, fieldValue, updateCredentials})
                         Undo
                     ],
                     initialData: fieldValue,
-                    placeholder: "The description of the service"
+                    placeholder: placeholder
                 }}
                 onChange={(e) => handleChange(e)}
             />

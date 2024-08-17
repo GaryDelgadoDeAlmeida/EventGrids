@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Notification from "../components/Notification"
+import WyziwigField from "./parts/WyziwigField"
 
 export default function ArticleForm() {
 
@@ -50,10 +51,17 @@ export default function ArticleForm() {
                 </div>
                 
                 <div className={"form-field"}>
-                    <textarea
-                        onChange={(e) => handleChange(e, "content")}
-                        required
-                    >{credentials.content}</textarea>
+                    <WyziwigField
+                        fieldName={"content"}
+                        fieldValue={credentials.content}
+                        placeholder={"Article description"}
+                        updateCredentials={(fieldName, fieldValue) => {
+                            setCredentials({
+                                ...credentials,
+                                [fieldName]: fieldValue
+                            })
+                        }}
+                    />
                 </div>
                 
                 <div className={"form-field"}>

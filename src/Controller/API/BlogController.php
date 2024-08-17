@@ -26,13 +26,11 @@ class BlogController extends AbstractController
         $limit = is_numeric($request->get("limit")) && $request->get("limit") > 1 ? $request->get("limit") : 9;
         $offset = is_numeric($request->get("offset")) && $request->get("offset") > 1 ? intval($request->get("offset")) : 1;
 
-        return $this->json([
+        return $this->json($this->serializeManager->serializeContent([
             "offset" => $offset,
             "maxOffset" => ceil($this->blogRepository->countBlogs() / $limit),
-            "results" => $this->serializeManager->serializeContent(
-                $this->blogRepository->findBy([], ["createdAt" => "DESC"], $limit, ($offset - 1) * $limit)
-            )
-        ], Response::HTTP_OK);
+            "results" => $this->blogRepository->findBy([], ["createdAt" => "DESC"], $limit, ($offset - 1) * $limit)
+        ]), Response::HTTP_OK);
     }
 
     #[Route('/blog/{blogID}', name: 'get_blog', requirements: ["blogID" => "^\d+(?:\d+)?$"], methods: ["GET"])]

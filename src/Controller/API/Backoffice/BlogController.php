@@ -97,6 +97,11 @@ class BlogController extends AbstractController
         return $this->json($this->serializeManager->serializeContent($blog), Response::HTTP_ACCEPTED);
     }
 
+    #[Route('/blog/{blogID}', name: 'update_blog_image', requirements: ["blogID" => "^\d+(?:\d+)?$"], methods: ["UPDATE", "PUT"])]
+    public function update_blog_image(int $blogID, Request $request) : JsonResponse {
+        $this->json([], Response::HTTP_OK);
+    }
+
     #[Route('/blog/{blogID}/remove', name: 'remove_blog', requirements: ["blogID" => "^\d+(?:\d+)?$"], methods: ["DELETE"])]
     function remove_blog(int $blogID) : JsonResponse {
         $blog = $this->blogRepository->find($blogID);

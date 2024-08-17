@@ -16,7 +16,7 @@ class SerializeManager {
      * @param mixed entities
      */
     public function serializeContent($entities) {
-        return $this->serializer->serialize(
+        return $this->serializer->normalize(
             $entities, 
             "json", 
             ["circular_reference_handler" => function ($object) {

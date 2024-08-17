@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import HeaderAdmin from "../../components/HeaderAdmin";
 import { Link, Navigate, useParams } from "react-router-dom";
-import PrivateResource from "../../hooks/PrivateResource";
+import HeaderAdmin from "../../components/HeaderAdmin";
+import ArticleForm from "../../forms/ArticleForm"
 import Notification from "../../components/Notification";
+import PrivateResource from "../../hooks/PrivateResource";
 
 export default function Article() {
 
@@ -20,23 +21,23 @@ export default function Article() {
         <HeaderAdmin>
             <Link className={"btn btn-blue"} to={"/admin/articles"}>Return</Link>
 
-            {loading && (
-                <Notification classname={"information"} message={"Loading ..."} />
-            )}
+            <section className={"page-section mt-25"}>
+                {loading && (
+                    <Notification classname={"information"} message={"Loading ..."} />
+                )}
 
-            {!loading && (
-                <>
-                    {Object.keys(error).length > 0 && (
-                        <Notification classname={"danger"} message={error.response.data.message ?? error.response.data.detail} />
-                    )}
+                {!loading && (
+                    <>
+                        {Object.keys(error).length > 0 && (
+                            <Notification classname={"danger"} message={error.response.data.message ?? error.response.data.detail} />
+                        )}
 
-                    {Object.keys(items.results ?? []).length > 0 && (
-                        <section className={"page-section"}>
-                            <h2 className={"page-title"}>Article detail</h2>
-                        </section>
-                    )}
-                </>
-            )}
+                        {Object.keys(items ?? []).length > 0 && (
+                            <ArticleForm />
+                        )}
+                    </>
+                )}
+            </section>
         </HeaderAdmin>
     )
 }
