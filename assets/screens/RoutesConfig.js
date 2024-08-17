@@ -22,8 +22,10 @@ import AdminTeams from "./admin/Teams";
 import AdminTeamNew from "./admin/TeamNew";
 import AdminEvents from "./admin/Events";
 import AdminSponsors from "./admin/Sponsors";
+import AdminSponsorNew from "./admin/SponsorNew";
 import AdminTestimonials from "./admin/Testimonials";
 import AdminTestimonial from "./admin/Testimonial";
+import AdminTestimonialNew from "./admin/TestimonialNew";
 import AdminPrices from "./admin/Prices";
 import AdminInboxs from "./admin/Inboxs";
 import AdminArticles from "./admin/Articles";
@@ -57,8 +59,10 @@ export default function RoutesConfig() {
             <Route path={"/admin/events"} element={<AdminEvents />} />
             <Route path={"/admin/events/add"} element={<AdminEvents />} />
             <Route path={"/admin/sponsors"} element={<AdminSponsors />} />
+            <Route path={"/admin/sponsors/add"} element={<AdminSponsorNew />} />
             <Route path={"/admin/testimonials"} element={<AdminTestimonials />} />
             <Route path={"/admin/testimonial/:testimonialID"} element={<AdminTestimonial />} />
+            <Route path={"/admin/testimonials/add"} element={<AdminTestimonialNew />} />
             <Route path={"/admin/prices"} element={<AdminPrices />} />
             <Route path={"/admin/inboxs"} element={<AdminInboxs />} />
             <Route path={"/admin/blogs"} element={<AdminArticles />} />

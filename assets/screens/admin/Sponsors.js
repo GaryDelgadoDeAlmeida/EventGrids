@@ -15,20 +15,20 @@ export default function Sponsors() {
 
     return (
         <HeaderAdmin>
-            {loading && (
-                <Notification classname={"information"} message={"Loading ..."} />
-            )}
+            <Link className={"btn btn-m btn-green"} to={"/admin/sponsors/add"}>Add a sponsor</Link>
+            
+            <section className={"page-section mt-25"}>
+                {loading && (
+                    <Notification classname={"information"} message={"Loading ..."} />
+                )}
 
-            {!loading && (
-                <>
-                    {Object.keys(error).length > 0 && Object.keys(items.results ?? []).length == 0 && (
-                        <Notification classname={"danger"} message={error.response.data.message ?? error.response.data.detail} />
-                    )}
+                {!loading && (
+                    <>
+                        {Object.keys(error).length > 0 && Object.keys(items.results ?? []).length == 0 && (
+                            <Notification classname={"danger"} message={error.response.data.message ?? error.response.data.detail} />
+                        )}
 
-                    {Object.keys(items.results ?? []).length > 0 ? (
-                        <section className={"page-section"}>
-                            <h2 className={"page-title"}>Sponsors</h2>
-
+                        {Object.keys(items.results ?? []).length > 0 ? (
                             <div className={"d-col -g-15"}>
                                 {Object.values(items.results).map((item, index) => (
                                     <div key={index} className={"table-card"}>
@@ -46,12 +46,12 @@ export default function Sponsors() {
                                     </div>
                                 ))}
                             </div>
-                        </section>
-                    ) : (
-                        <Notification classname={"information"} message={"There is no sponsors"} />
-                    )}
-                </>
-            )}
+                        ) : (
+                            <Notification classname={"information"} message={"There is no sponsors"} />
+                        )}
+                    </>
+                )}
+            </section>
         </HeaderAdmin>
     )
 }
