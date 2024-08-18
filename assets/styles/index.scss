@@ -1,6 +1,6 @@
 :root {
     // Palette
-    --c-primary: #3813c2;
+    --c-primary: var(--c-deepBlue);
     --c-secondary: #F20487;
     --c-three: #101130;
 
@@ -13,6 +13,7 @@
     --c-orange: #ffa500;
 
     // Specific
+    --c-deepBlue: #3813c2;
     --c-greenLime: #198344;
     --c-lightGreen: #a8f1c6;
     --c-lightOrange: #fff9f0;

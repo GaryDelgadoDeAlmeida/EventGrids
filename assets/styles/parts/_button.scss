@@ -51,6 +51,11 @@ button {
         padding: .5rem 1rem;
     }
 
+    &.btn-xl {
+        font-size: 1rem;
+        padding: 1.25rem 1.75rem;
+    }
+
     &.btn-bold {
         font-weight: 700;
     }
@@ -124,6 +129,17 @@ button {
         &:hover {
             background-color: transparent;
             color: var(--c-green);
+        }
+    }
+
+    &.btn-blue {
+        color: var(--c-white);
+        border: 1px solid var(--c-deepBlue);
+        background-color: var(--c-deepBlue);
+
+        &:hover {
+            color: var(--c-deepBlue);
+            background-color: transparent;
         }
     }
 

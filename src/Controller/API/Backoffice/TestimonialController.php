@@ -25,7 +25,7 @@ class TestimonialController extends AbstractController
     ) {
         $this->serializeManager = $serializeManager;
         $this->testimonialManager = $testimonialManager;
-        $this->TestimonialRepository = $TestimonialRepository;
+        $this->testimonialRepository = $testimonialRepository;
     }
 
     #[Route('/testimonial', name: 'post_testimonial', methods: ["POST"])]

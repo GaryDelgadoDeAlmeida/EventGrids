@@ -16,7 +16,7 @@ export default function Login() {
                     <div className={"page-wrapper h-100 align-center"}>
                         <div className={"mw-500 -m-mw-100 m-auto"}>
                             <div className={"d-flex jf-between mb-15"}>
-                                <Link className={"btn btn-primary -inline-flex"} to={"/"}>
+                                <Link className={"btn btn-m btn-primary -inline-flex"} to={"/"}>
                                     <img src={`${window.location.origin}/content/svg/arrow-left-long-white.svg`} alt={""} />
                                     <span>Back to home</span>
                                 </Link>

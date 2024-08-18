@@ -11,6 +11,7 @@ export default function LoginForm() {
     })
 
     const handleChange = (e, fieldName) => {
+        setFormResponse({})
         setCredentials({
             ...credentials,
             [fieldName]: e.currentTarget.value
@@ -69,7 +70,7 @@ export default function LoginForm() {
                 </div>
 
                 <div className={"form-actions"}>
-                    <button className={"btn btn-primary btn-bold"} type={"submit"}>Submit</button>
+                    <button className={"btn btn-m btn-primary btn-bold"} type={"submit"}>Submit</button>
                 </div>
             </form>
         </>

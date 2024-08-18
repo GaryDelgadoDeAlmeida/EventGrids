@@ -44,8 +44,13 @@ export default function Articles() {
                                             <p>{item.description}</p>
                                         </div>
                                         <div className={"-bottom d-flex -g-5"}>
-                                            <Link className={"btn btn-m btn-primary"} to={`/admin/blog/${item.id}`}>See</Link>
-                                            <button type={"submit"} className={"btn btn-m btn-red"} data-blog={item.id} onClick={(e) => handleRemoveArticle(e)}>Remove</button>
+                                            <Link className={"btn btn-m btn-primary"} to={`/admin/blog/${item.id}`}>
+                                                <span>See</span>
+                                            </Link>
+                                            
+                                            <button type={"submit"} className={"btn btn-m btn-red"} data-blog={item.id} onClick={(e) => handleRemoveArticle(e)}>
+                                                <span>Remove</span>
+                                            </button>
                                         </div>
                                     </div>
                                 ))}

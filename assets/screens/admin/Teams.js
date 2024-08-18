@@ -91,7 +91,9 @@ export default function Teams() {
                                                     <span>See</span>
                                                 </Link>
 
-                                                <button className={"btn btn-m btn-red"} type={"button"}>Remove</button>
+                                                <button type={"button"} className={"btn btn-m btn-red"} data-team={item.id} onClick={(e) => handleRemoveMember(e)}>
+                                                    <span>Remove</span>
+                                                </button>
                                             </div>
                                         </div>
                                     ))}

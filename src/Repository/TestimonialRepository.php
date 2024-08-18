@@ -16,28 +16,38 @@ class TestimonialRepository extends ServiceEntityRepository
         parent::__construct($registry, Testimonial::class);
     }
 
-    //    /**
-    //     * @return Testimonial[] Returns an array of Testimonial objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('t')
-    //            ->andWhere('t.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('t.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+     * @param Testimonial entity to insert
+     * @param bool flush changes into database
+     */
+    public function save(Testimonial $entity, bool $flush = false) : void {
+        $this->getEntityManager()->persist($entity);
 
-    //    public function findOneBySomeField($value): ?Testimonial
-    //    {
-    //        return $this->createQueryBuilder('t')
-    //            ->andWhere('t.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        if($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    /**
+     * @param Testimonial entity to remove
+     * @param bool flush changes into database
+     */
+    public function remove(Testimonial $entity, bool $flush = false) : void {
+        $this->getEntityManager()->remove($entity);
+
+        if($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function countTestimonials() : int {
+        return $this->createQueryBuilder("testimonial")
+            ->select("COUNT(testimonial.id) as nbrTestimonial")
+            ->getQuery()
+            ->getSingleResult()["nbrTestimonial"]
+        ;
+    }
 }

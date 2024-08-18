@@ -32,6 +32,8 @@ export default function TestimonialForm({testimonial = null}) {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
+
         axios
             .post(`${window.location.origin}/api/backoffice/testimonial`, credentials, {
                 headers: {
@@ -42,7 +44,7 @@ export default function TestimonialForm({testimonial = null}) {
             })
             .then((response) => {
                 let testimonial = response.data
-                if(testimonial) {
+                if(testimonial && credentialFiles.photo.length > 0) {
                     handlePhotoUpdate(testimonial)
                 }
             })
