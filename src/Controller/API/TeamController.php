@@ -23,7 +23,9 @@ class TeamController extends AbstractController
     #[Route('/teams', name: 'get_teams', methods: ["GET"])]
     public function get_teams(): JsonResponse {
         return $this->json([
-            "results" => $this->teamRepository->findAll()
+            "results" => $this->serializeManager->serializeContent(
+                $this->teamRepository->findAll()
+            )
         ], Response::HTTP_OK);
     }
 }

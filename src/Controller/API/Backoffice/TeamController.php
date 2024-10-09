@@ -2,6 +2,7 @@
 
 namespace App\Controller\API\Backoffice;
 
+use App\Manager\FileManager;
 use App\Manager\SerializeManager;
 use App\Manager\TeamManager;
 use App\Repository\TeamRepository;
@@ -15,22 +16,34 @@ use Symfony\Component\Routing\Attribute\Route;
 class TeamController extends AbstractController
 {
     private TeamManager $teamManager;
+    private FileManager $fileManager;
     private SerializeManager $serializeManager;
     private TeamRepository $teamRepository;
 
     function __construct(
         TeamManager $teamManager,
+        FileManager $fileManager,
         SerializeManager $serializeManager, 
         TeamRepository $teamRepository
     ) {
         $this->teamManager = $teamManager;
+        $this->fileManager = $fileManager;
         $this->serializeManager = $serializeManager;
         $this->teamRepository = $teamRepository;
     }
 
     #[Route('/teams', name: 'get_teams', methods: ["GET"])]
     public function get_teams(Request $request): JsonResponse {
-        return $this->json([""], Response::HTTP_OK);
+        $limit = 10;
+        $offset = !empty($request->get("offset")) && is_numeric($request->get("offset")) && $request->get("offset") > 1 ? intval($request->get("offset")) : 1;
+
+        return $this->json([
+            "offset" => $offset,
+            "maxOffset" => ceil($this->teamRepository->countTeams() / $limit),
+            "results" => $this->serializeManager->serializeContent(
+                $this->teamRepository->findBy([], ["id" => "DESC"], $limit, ($offset - 1) * $limit)
+            )
+        ], Response::HTTP_OK);
     }
 
     #[Route('/team', name: 'post_team', methods: ["POST"])]
@@ -86,7 +99,7 @@ class TeamController extends AbstractController
                 throw new \Exception("An error has been encountered with the sended body", Response::HTTP_PRECONDITION_FAILED);
             }
 
-            $team = $this->teamManager->fillManager($fields, $team);
+            $team = $this->teamManager->fillTeam($fields, $team);
             if(is_string($team)) {
                 throw new \Exception($team);
             }
@@ -147,9 +160,10 @@ class TeamController extends AbstractController
         }
 
         try {
-            // TODO: Remove team member photo
+            // Remove team member photo
+            $this->fileManager->removeFile($team->getImgPath());
             
-            // TODO: Remove team object
+            // Remove team object
             $this->teamRepository->remove($team, true);
         } catch(\Exception $e) {
             $code = $e->getCode();
@@ -159,6 +173,6 @@ class TeamController extends AbstractController
             ], $code !== 200 ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        return $this->json([""], Response::HTTP_OK);
+        return $this->json(null, Response::HTTP_NO_CONTENT);
     }
 }

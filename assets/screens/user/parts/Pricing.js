@@ -22,7 +22,7 @@ export default function Pricing() {
                         <div className={"-center"}>
                             <label className={"-description"}>Available ticket for this days</label>
                             <span className={"-price"}>20 €</span>
-                            <div className={"d-flex jf-content-center"}>
+                            <div className={"d-flex jf-center"}>
                                 <Link className={"btn btn-primary btn-bold"} to={"/buy-tickets"}>Get Ticket</Link>
                             </div>
                         </div>
@@ -41,7 +41,7 @@ export default function Pricing() {
                         <div className={"-center"}>
                             <label className={"-description"}>Available ticket for this days</label>
                             <span className={"-price"}>40 €</span>
-                            <div className={"d-flex jf-content-center"}>
+                            <div className={"d-flex jf-center"}>
                                 <Link className={"btn btn-secondary-bis btn-bold"} to={"/buy-tickets"}>Get Ticket</Link>
                             </div>
                         </div>
@@ -60,7 +60,7 @@ export default function Pricing() {
                         <div className={"-center"}>
                             <label className={"-description"}>Available ticket for this days</label>
                             <span className={"-price"}>60 €</span>
-                            <div className={"d-flex jf-content-center"}>
+                            <div className={"d-flex jf-center"}>
                                 <Link className={"btn btn-primary btn-bold"} to={"/buy-tickets"}>Get Ticket</Link>
                             </div>
                         </div>

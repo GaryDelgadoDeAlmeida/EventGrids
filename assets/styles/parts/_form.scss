@@ -31,12 +31,12 @@
         input:not([type="file"]), textarea, select {
             font-size: 16px;
             border-radius: 5px;
-            // border: 1px solid transparent;
+            border: 1px solid var(--c-lightGray);
             background-color: var(--c-white);
         }
 
         input:not([type="file"]) {
-            height: 40px;
+            height: 50px;
             padding: 0 20px;
         }
 
@@ -51,7 +51,7 @@
         }
 
         select {
-            height: 40px;
+            height: 50px;
             padding: 0 15px;
 
             &[multiple] {
@@ -67,6 +67,10 @@
         small {
             line-height: 1.5;
             padding-top: 10px;
+        }
+
+        .ck-content {
+            min-height: 350px;
         }
     }
 

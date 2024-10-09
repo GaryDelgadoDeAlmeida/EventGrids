@@ -10,7 +10,12 @@ export default function ServiceNew() {
             <Link className={"btn btn-m btn-primary"} to={"/admin/services"}>Return</Link>
 
             <section className={"page-section mt-25"}>
-                <ServiceForm />
+                <div className={"block-card"}>
+                    <div className={"-header"}></div>
+                    <div className={"-content"}>
+                        <ServiceForm />
+                    </div>
+                </div>
             </section>
         </HeaderAdmin>
     )

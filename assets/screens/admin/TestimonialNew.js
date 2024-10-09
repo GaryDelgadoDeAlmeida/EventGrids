@@ -10,7 +10,12 @@ export default function TestimonialNew() {
             <Link className={"btn btn-m btn-primary"} to={"/admin/testimonials"}>Return</Link>
 
             <section className={"page-section mt-25"}>
-                <TestimonialForm />
+                <div className={"block-card"}>
+                    <div className={"-header"}></div>
+                    <div className={"-content"}>
+                        <TestimonialForm />
+                    </div>
+                </div>
             </section>
         </HeaderAdmin>
     )

@@ -1,6 +1,6 @@
 :root {
     // Palette
-    --c-primary: var(--c-deepBlue);
+    --c-primary: #3813c2;
     --c-secondary: #F20487;
     --c-three: #101130;
 
@@ -13,7 +13,7 @@
     --c-orange: #ffa500;
 
     // Specific
-    --c-deepBlue: #3813c2;
+    --c-lightBlue: #f3f5fa;
     --c-greenLime: #198344;
     --c-lightGreen: #a8f1c6;
     --c-lightOrange: #fff9f0;
@@ -62,6 +62,7 @@
 @import "./parts/button";
 @import "./parts/helpers";
 @import "./parts/banner";
+@import "./parts/badge";
 @import "./parts/card_feature";
 @import "./parts/card_team";
 @import "./parts/card_block";
@@ -72,6 +73,6 @@
 @import "./parts/card_testimonial";
 @import "./parts/card_message";
 @import "./parts/card_table";
-@import "./parts/badge";
+@import "./parts/card_comment";
 @import "./parts/caroussel";
 @import "./parts/pagination";

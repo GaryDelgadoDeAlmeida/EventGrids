@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NewsletterForm from "../forms/NewsletterForm";
 
 export default function Header(props) {
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [headerClasses, setHeaderClasses] = useState("page-header")
+
+    const handleScroll = (e) => {
+        if(window.scrollY > 100) {
+            setHeaderClasses("page-header -fixed")
+        } else {
+            setHeaderClasses("page-header")
+        }
+    }
+
+    document.addEventListener("scroll", handleScroll)
 
     return (
-        <div className={"page"}>
-            <div className={"page-header"}>
+        <div id={"page"} className={"page"}>
+            <div className={headerClasses}>
                 <div className={"header-wrapper"}>
 
                     {/* Desktop menu */}
@@ -19,10 +31,10 @@ export default function Header(props) {
                         <div className={"-center"}>
                             <nav className={"menu"}>
                                 <li><Link to={"/"}>Home</Link></li>
-                                {/* <li><Link to={"/pages"}>Pages</Link></li> */}
                                 <li><Link to={"/about-us"}>Pages</Link></li>
                                 <li><Link to={"/events"}>Schedule</Link></li>
                                 <li><Link to={"/speakers"}>Speakers</Link></li>
+                                <li><Link to={"/gallery"}>Gallery</Link></li>
                                 <li><Link to={"/blog"}>Blog</Link></li>
                                 <li><Link to={"/contact"}>Contact</Link></li>
                             </nav>
@@ -48,17 +60,20 @@ export default function Header(props) {
                                 <img src={`${window.location.origin}/content/svg/bars-white.svg`} />
                             </label>
                             <div className={"mobile-menu"}>
-                                <label className={"labelBars"} htmlFor={"menubars"}>
-                                    <img src={`${window.location.origin}/content/svg/bars-white.svg`} />
-                                </label>
-                                <nav className={"menu"}>
-                                    <li><Link to={"/"}>Home</Link></li>
-                                    <li><Link to={"/pages"}>Pages</Link></li>
-                                    <li><Link to={"/schedule"}>Schedule</Link></li>
-                                    <li><Link to={"/speakers"}>Speakers</Link></li>
-                                    <li><Link to={"/blog"}>Blog</Link></li>
-                                    <li><Link to={"/contact"}>Contact</Link></li>
-                                </nav>
+                                <div className={"mobile-menu-widget"}>
+                                    <label className={"labelBars"} htmlFor={"menubars"}>
+                                        <img src={`${window.location.origin}/content/svg/bars-white.svg`} />
+                                    </label>
+                                    <nav className={"menu"}>
+                                        <li className={"-item"}><Link to={"/"}>Home</Link></li>
+                                        <li className={"-item"}><Link to={"/about-us"}>Pages</Link></li>
+                                        <li className={"-item"}><Link to={"/schedule"}>Schedule</Link></li>
+                                        <li className={"-item"}><Link to={"/speakers"}>Speakers</Link></li>
+                                        <li className={"-item"}><Link to={"/gallery"}>Gallery</Link></li>
+                                        <li className={"-item"}><Link to={"/blog"}>Blog</Link></li>
+                                        <li className={"-item"}><Link to={"/contact"}>Contact</Link></li>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                         <div className={"-right"}>

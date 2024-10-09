@@ -21,8 +21,16 @@
     align-content: center;
 }
 
-.jf-content-center {
+.jf-center {
     justify-content: center;
+}
+
+.jf-start {
+    justify-content: start;
+}
+
+.jf-end {
+    justify-content: end;
 }
 
 .jf-between {
@@ -58,6 +66,14 @@
 
 
 /* ------------------------------------------------------------ *\
+    Font-weight
+\* ------------------------------------------------------------ */
+.fw-bold {
+    font-weight: bold;
+}
+
+
+/* ------------------------------------------------------------ *\
     Background color
 \* ------------------------------------------------------------ */
 .bg-primary {
@@ -82,6 +98,17 @@
 
 .bg-white {
     background-color: var(--c-white);
+}
+
+/* ------------------------------------------------------------ *\
+    Position
+\* ------------------------------------------------------------ */
+.p-absolute {
+    position: absolute;
+}
+
+.p-relative {
+    position: relative;
 }
 
 
@@ -241,7 +268,7 @@
     }
 
     @include tablet {
-        &.-col-3 {
+        &.-col-3, &.-col-4 {
             grid-template-columns: repeat(2, 1fr);
         }
 
@@ -251,6 +278,10 @@
     }
     
     @include mobile {
+        &.-col-4 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
         &.-col-3 {
             grid-template-columns: repeat(1, 1fr);
         }

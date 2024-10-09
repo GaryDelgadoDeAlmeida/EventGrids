@@ -13,7 +13,14 @@ export default function Profile() {
     return (
         <HeaderAdmin>
             <div className={"page-section"}>
-                <ProfileForm />
+                <div className={"block-card"}>
+                    <div className={"-header"}>
+                        <label className={"-title"}>Your profile</label>
+                    </div>
+                    <div className={"-content"}>
+                        <ProfileForm />
+                    </div>
+                </div>
             </div>
         </HeaderAdmin>
     )

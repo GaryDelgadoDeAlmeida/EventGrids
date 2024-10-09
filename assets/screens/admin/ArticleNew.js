@@ -10,7 +10,12 @@ export default function ArticleNew() {
             <Link className={"btn btn-m btn-primary"} to={"/admin/blogs"}>Return</Link>
             
             <section className={"page-section mt-25"}>
-                <ArticleForm />
+                <div className={"block-card"}>
+                    <div className={"-header"}></div>
+                    <div className={"-content"}>
+                        <ArticleForm />
+                    </div>
+                </div>
             </section>
         </HeaderAdmin>
     )

@@ -64,7 +64,7 @@ export default function UserForm() {
                 </div>
                 
                 <div className={"form-actions"}>
-                    <button type={"submit"} className={"btn btn-primary btn-bold"}>Submit</button>
+                    <button type={"submit"} className={"btn btn-primary btn-bold btn-m"}>Submit</button>
                 </div>
             </form>
         </>

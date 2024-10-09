@@ -26,7 +26,9 @@ class ServiceController extends AbstractController
     #[Route('/services', name: 'get_services', methods: ["GET"])]
     public function get_services(): JsonResponse {
         return $this->json([
-            "results" => $this->serviceRepository->findAll()
+            "results" => $this->serializeManager->serializeContent(
+                $this->serviceRepository->findAll()
+            )
         ], Response::HTTP_OK);
     }
 }

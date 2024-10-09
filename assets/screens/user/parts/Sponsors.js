@@ -11,7 +11,7 @@ export default function Sponsors() {
 
                 {/* <div className={"page-sponsors"}> */}
                 <div className={"mw-50 -m-mw-100 w-100 my-auto"}>
-                    <div className={"d-flex -g-25 -wrap jf-content-center"}>
+                    <div className={"d-flex -g-25 -wrap jf-center"}>
                         <div className={"sponsor-card"}>
                             <img src={`${window.location.origin}/content/img/sponsors/graygrids-logo.svg`} alt={""} />
                         </div>

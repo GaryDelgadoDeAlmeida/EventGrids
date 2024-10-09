@@ -1,9 +1,18 @@
-import React from "react";
-import Header from "../../components/Header";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "../../components/Header";
+import Pagination from "../../components/Pagination";
 import ArticleCard from "../../components/ArticleCard";
+import PrivateResource from "../../hooks/PrivateResource";
 
 export default function Articles() {
+
+    const [offset, setOffset] = useState(1)
+    const { loading, items, load, error } = PrivateResource(`${window.location.origin}/api/blogs?offset=${offset}`)
+
+    useEffect(() => {
+        load()
+    }, [offset])
 
     return (
         <Header>
@@ -12,7 +21,7 @@ export default function Articles() {
                     <img src={`${window.location.origin}/content/img/background-hero.jpg`} alt={""} />
                 </div>
                 <div className={"hero-wrapper"}>
-                    <h1 className={"-hero-title"}>Articles</h1>
+                    <h1 className={"-hero-title"}>Blog</h1>
                     <div className={"-hero-breadcrumbs"}>
                         <Link to={"/"}>Home</Link>
                         <span>Blog</span>
@@ -30,6 +39,13 @@ export default function Articles() {
                         <ArticleCard imgPath={"/content/img/blog/blog2.jpg"} />
                         <ArticleCard imgPath={"/content/img/blog/blog3.jpg"} />
                     </div>
+
+                    {/* <Pagination /> */}
+                    <Pagination
+                        offset={offset}
+                        setOffset={setOffset}
+                        maxOffset={7}
+                    />
                 </div>
             </section>
         </Header>

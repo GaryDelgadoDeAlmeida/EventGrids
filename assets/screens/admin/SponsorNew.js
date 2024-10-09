@@ -10,7 +10,14 @@ export default function SponsorNew() {
             <Link className={"btn btn-m btn-primary"} to={"/admin/sponsors"}>Return</Link>
 
             <section className={"page-section mt-25"}>
-                <SponsorForm />
+                <div className={"block-card"}>
+                    <div className={"-header"}>
+                        <label className={"-title"}>Add a sponsor</label>
+                    </div>
+                    <div className={"-content"}>
+                        <SponsorForm />
+                    </div>
+                </div>
             </section>
         </HeaderAdmin>
     )

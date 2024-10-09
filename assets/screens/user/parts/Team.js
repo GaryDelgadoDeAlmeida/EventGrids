@@ -53,7 +53,7 @@ export default function Team() {
                 <h2 className={"page-title"}>Todays Performers</h2>
                 <p className={"page-description"}>Lorem ipsum dolor sit amet. Et itaque velit non repudiandae ipsum non voluptatum autem ad galisum tempore non repellendus veniam aut rerum praesentium non vitae sint.</p>
 
-                <div className={"d-grid -g-25 -col-4 -t-col-2 -m-col-1"}>
+                <div className={"d-grid -g-25 -col-4"}>
                     {teams.map((item, index) => (
                         <TeamCard key={index} {...item} />
                     ))}

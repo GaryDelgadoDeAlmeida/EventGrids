@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 
 export default function HeaderAdmin(props) {
 
-    const [isLogged, setIsLogged] = useState(true)
+    const storageUser = localStorage.getItem("token") ?? ""
+    const [isLogged, setIsLogged] = useState(storageUser.length > 0 ? true : false)
+
+    useEffect(() => {
+        updateLoggedStatus
+    }, [storageUser])
 
     const handleLogout = (e) => {
         e.preventDefault()
         setIsLogged(false)
+    }
+
+    const updateLoggedStatus = (status) => {
+        if(storageUser.length == 0) {
+            setLogged(status)
+        }
     }
 
     return (
@@ -27,6 +38,7 @@ export default function HeaderAdmin(props) {
                         <Link to={"/admin/sponsors"}>Sponsors</Link>
                         <Link to={"/admin/testimonials"}>Testimonials</Link>
                         <Link to={"/admin/blogs"}>Blog</Link>
+                        <Link to={"/admin/comments"}>Comments</Link>
                         <Link to={"/admin/prices"}>Prices</Link>
                         <Link to={"/admin/inboxs"}>Inboxs</Link>
                         <Link className={"bg-red"} to={"/logout"} onClick={(e) => handleLogout(e)}>Logout</Link>

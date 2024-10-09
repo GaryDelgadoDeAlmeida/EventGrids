@@ -1,0 +1,43 @@
+.comment-card {
+    gap: 25px;
+    display: flex;
+    padding: 40px 0;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid var(--c-lightGray);
+    }
+    
+
+    .-header {
+        margin: 0 auto;
+
+        .-avatar {
+            width: 80px;
+            border-radius: 5px;
+        }
+    }
+
+    .-content {
+        flex: 1;
+        display: flex;
+        font-size: 1rem;
+        flex-direction: column;
+
+        label {
+            font-weight: 700;
+        }
+
+        span {
+            padding-top: 10px;
+            font-size: .9rem;
+            color: var(--c-dimmGray);
+        }
+
+        p {
+            margin: 0;
+            line-height: 1.5;
+            padding-top: 25px;
+            color: var(--c-dimmGray);
+        }
+    }
+}

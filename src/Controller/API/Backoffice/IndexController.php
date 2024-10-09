@@ -13,12 +13,15 @@ use Symfony\Component\Routing\Attribute\Route;
 class IndexController extends AbstractController
 {
     private SerializeManager $serializeManager;
+
     function __construct(SerializeManager $serializeManager) {
         $this->serializeManager = $serializeManager;
     }
 
     #[Route('/', name: 'get_index', methods: ["GET"])]
     public function get_index(Request $request): JsonResponse {
-        return $this->json([], Response::HTTP_OK);
+        return $this->json([
+            "results" => $this->serializeManager->serializeContent([])
+        ], Response::HTTP_OK);
     }
 }

@@ -5,6 +5,7 @@ import Team from "./parts/Team";
 import Services from "./parts/Services";
 import Experience from "./parts/Experience";
 import { ucwords } from "../../hooks/DomControl";
+import Banner from "../../components/Banner";
 
 export default function About() {
 
@@ -28,6 +29,12 @@ export default function About() {
             <Experience />
 
             <Team />
+
+            <Banner
+                supTitle={"Hurry Up!"}
+                title={"Europe’s Leading Conference Book your Seat Now"}
+                description={"Entertainment & technology show inspirational speakers including game changing not just a large-scale conference but a hub."}
+            />
         </Header>
     )
 }

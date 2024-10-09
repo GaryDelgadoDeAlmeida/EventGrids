@@ -3,6 +3,7 @@
 namespace App\Controller\API\Backoffice;
 
 use App\Manager\BlogManager;
+use App\Manager\FileManager;
 use App\Manager\SerializeManager;
 use App\Repository\BlogRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,15 +16,18 @@ use Symfony\Component\Routing\Attribute\Route;
 class BlogController extends AbstractController
 {
     private BlogManager $blogManager;
+    private FileManager $fileManager;
     private SerializeManager $serializeManager;
     private BlogRepository $blogRepository;
 
     function __construct(
         BlogManager $blogManager, 
+        FileManager $fileManager,
         SerializeManager $serializeManager, 
         BlogRepository $blogRepository
     ) {
         $this->blogManager = $blogManager;
+        $this->fileManager = $fileManager;
         $this->serializeManager = $serializeManager;
         $this->blogRepository = $blogRepository;
     }
@@ -53,7 +57,7 @@ class BlogController extends AbstractController
             $code = $e->getCode();
             return $this->json([
                 "message" => $e->getMessage()
-            ], $code !== 200 ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], isset(Response::$statusTexts[$code]) && $code !== 200 ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return $this->json(null, Response::HTTP_CREATED);
@@ -89,9 +93,10 @@ class BlogController extends AbstractController
             $this->blogRepository->save($blog, true);
         } catch(\Exception $e) {
             $code = $e->getCode();
+
             return $this->json([
                 "message" => $e->getMessage()
-            ], $code !== 200 ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], isset(Response::$statusTexts[$code]) && $code !== 200 ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return $this->json($this->serializeManager->serializeContent($blog), Response::HTTP_ACCEPTED);
@@ -99,11 +104,28 @@ class BlogController extends AbstractController
 
     #[Route('/blog/{blogID}', name: 'update_blog_image', requirements: ["blogID" => "^\d+(?:\d+)?$"], methods: ["UPDATE", "PUT"])]
     public function update_blog_image(int $blogID, Request $request) : JsonResponse {
-        $this->json([], Response::HTTP_OK);
+        $blog = $this->blogRepository->find($blogID);
+        if(empty($blog)) {
+            return $this->json([
+                "message" => "The article couldn't be found"
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        try {
+            // 
+        } catch(\Exception $e) {
+            $code = $e->getCode();
+
+            return $this->json([
+                "message" => $e->getMessage()
+            ], isset(Response::$statusTexts[$code]) && $code !== 200 ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        return $this->json([], Response::HTTP_OK);
     }
 
     #[Route('/blog/{blogID}/remove', name: 'remove_blog', requirements: ["blogID" => "^\d+(?:\d+)?$"], methods: ["DELETE"])]
-    function remove_blog(int $blogID) : JsonResponse {
+    public function remove_blog(int $blogID) : JsonResponse {
         $blog = $this->blogRepository->find($blogID);
         if(empty($blog)) {
             return $this->json([
@@ -118,10 +140,9 @@ class BlogController extends AbstractController
 
             return $this->json([
                 "message" => $e->getMessage()
-            ], $code != 200 ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
+            ], isset(Response::$statusTexts[$code]) && $code != 200 ? $code : Response::HTTP_INTERNAL_SERVER_ERROR);
         }
-        return $this->json([
-            "message" => "Route under construction"
-        ], Response::HTTP_OK);
+
+        return $this->json(null, Response::HTTP_NO_CONTENT);
     }
 }

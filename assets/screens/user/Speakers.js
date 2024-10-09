@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../../components/Header";
 import { Link } from "react-router-dom";
 import Team from "./parts/Team";
+import Banner from "../../components/Banner";
 
 export default function Speakers() {
 
@@ -21,6 +22,12 @@ export default function Speakers() {
             </section>
 
             <Team />
+
+            <Banner
+                supTitle={"Hurry Up!"}
+                title={"Europe’s Leading Conference Book your Seat Now"}
+                description={"Entertainment & technology show inspirational speakers including game changing not just a large-scale conference but a hub."}
+            />
         </Header>
     )
 }

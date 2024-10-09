@@ -29,11 +29,18 @@ class TagController extends AbstractController
         ]);
     }
 
-    #[Route('/tag/{tagID}', name: 'get_tag', methods: ["GET"])]
+    #[Route('/tag/{tagID}', name: 'get_tag', requirements: ["tagID" => "^\d+(?:\d+)?$"], methods: ["GET"])]
     public function get_tag(int $tagID) : JsonResponse {
+        $tag = $this->tagRepository->find($tagID);
+        if(empty($tag)) {
+            return $this->json([
+                "message" => "The tag couldn't be found"
+            ], Response::HTTP_NOT_FOUND);
+        }
+
         return $this->json([
             "results" => $this->serializeManager->serializeContent(
-                $this->tagRepository->find($tagID)
+                $tag
             )
         ]);
     }

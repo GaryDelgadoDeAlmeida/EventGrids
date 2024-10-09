@@ -17,6 +17,10 @@ class InboxRepository extends ServiceEntityRepository
         parent::__construct($registry, Inbox::class);
     }
 
+    /**
+     * @param Inbox entity
+     * @param bool flush
+     */
     public function save(Inbox $entity, bool $flush = false) : void {
         $this->getEntityManager()->persist($entity);
 
@@ -25,6 +29,10 @@ class InboxRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @param Inbox entity
+     * @param bool flush
+     */
     public function remove(Inbox $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -39,7 +47,7 @@ class InboxRepository extends ServiceEntityRepository
      */
     public function countInbox() {
         return $this->createQueryBuilder("inbox")
-            ->select("COUNT(id) as nbrInboxs")
+            ->select("COUNT(inbox.id) as nbrInboxs")
             ->getQuery()
             ->getSingleResult()["nbrInboxs"]
         ;
